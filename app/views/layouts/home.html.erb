@@ -2,8 +2,8 @@
 <html>
 <head>
   <title>Si</title>
-  <%= stylesheet_link_tag    'home' %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag "application", params[:controller] %>
+
   <%= csrf_meta_tags %>
 
   <!-- unify -->
@@ -13,8 +13,10 @@
 </head>
 <body class="header-fixed promo-padding-top">
   <div class="wrapper">
-<%= yield %>
+    <%= yield %>
   </div>
+
+  <%= javascript_include_tag "application", params[:controller] %>
 
   <script type="text/javascript">
 		jQuery(document).ready(function() {
@@ -26,6 +28,6 @@
 			StyleSwitcher.initStyleSwitcher();
 		});
 	</script>
-    
+
 </body>
 </html>

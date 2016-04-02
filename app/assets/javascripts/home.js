@@ -3,14 +3,11 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 
-// unify
-//= js/custom
-//= js/app
-//= js/plugins/fancy-box
-//= js/plugins/owl-carousel
-//= js/plugins/style-switcher
+//= require js/plugins/fancy-box
+//= require js/plugins/owl-carousel
+//= require js/plugins/style-switcher
+//= require js/app
 
-// unify plugins
 //= require back-to-top
 //= require smoothScroll
 //= require backstretch/backstretch-ini
