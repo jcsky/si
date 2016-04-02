@@ -17,6 +17,7 @@ gem 'pg'
 gem 'meta-tags'
 gem 'simple_form'
 gem 'kaminari'
+gem 'bootstrap-sass', '~> 3.3.6'
 
 # backend gem
 gem 'ransack'
