@@ -15,5 +15,17 @@
   <div class="wrapper">
 <%= yield %>
   </div>
+
+  <script type="text/javascript">
+		jQuery(document).ready(function() {
+			App.init();
+			new WOW().init();
+			App.initParallaxBg();
+			FancyBox.initFancybox();
+			OwlCarousel.initOwlCarousel();
+			StyleSwitcher.initStyleSwitcher();
+		});
+	</script>
+    
 </body>
 </html>
