@@ -39,6 +39,10 @@ group :development do
   gem 'spring'
   gem 'letter_opener'
   gem 'powder'
+
+  # deploy to server
+  gem 'capistrano-rails'
+  gem 'capistrano-passenger'
 end
 
 group :development, :test do
