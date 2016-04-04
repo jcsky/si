@@ -39,7 +39,7 @@ group :development do
   gem 'spring'
   gem 'letter_opener'
   gem 'powder'
-
+  gem 'meta_request'
   # deploy to server
   gem 'capistrano-rails'
   gem 'capistrano-passenger'
