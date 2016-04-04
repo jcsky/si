@@ -11,6 +11,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :impressions
+  resources :impressions do
+    member do
+      get 'like'
+      get 'unlike'
+    end
+  end
 
 end

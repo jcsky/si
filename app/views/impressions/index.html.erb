@@ -7,51 +7,8 @@
     <!-- Profile Content -->
     <div class="col-md-6 col-md-push-3">
       <div class="profile-body margin-bottom-20">
-        <!--Profile Blog-->
-        <div class="row margin-bottom-20">
-          <div class="col-sm-12 sm-margin-bottom-20">
-            <div class="profile-blog">
-              <img class="rounded-x" src="assets/img/testimonials/img1.jpg" alt="">
-              <div class="name-location">
-                <strong>Mikel Andrews</strong>
-                <span>市長</span>
-                <span>民進黨</span>
-                <span><i class="fa fa-map-marker"></i><a href="#">台南市</a> <a href="#">US</a></span>
-              </div>
-              <div class="clearfix margin-bottom-20"></div>
-              <p>Donec non dignissim eros. Mauris faucibus turpis volutpat sagittis rhoncus. Pellentesque et rhoncus sapien, sed ullamcorper justo.</p>
-              <hr>
-              <ul class="list-inline share-list">
-                <li><i class="fa fa-bell"></i><a href="#">12 喜歡</a></li>
-                <li><i class="fa fa-group"></i><a href="#">54 不喜歡</a></li>
-                <li><i class="fa fa-share"></i><a href="#">略過</a></li>
-              </ul>
-            </div>
-          </div>
-        </div><!--/end row-->
-        <!--End Profile Blog-->
 
-        <!--Profile Blog-->
-        <div class="row margin-bottom-20">
-          <div class="col-sm-12 sm-margin-bottom-20">
-            <div class="profile-blog">
-              <img class="rounded-x" src="assets/img/testimonials/img2.jpg" alt="">
-              <div class="name-location">
-                <strong>Sasha Elli</strong>
-                <span><i class="fa fa-map-marker"></i><a href="#">California,</a> <a href="#">US</a></span>
-              </div>
-              <div class="clearfix margin-bottom-20"></div>
-              <p>Donec non dignissim eros. Mauris faucibus turpis volutpat sagittis rhoncus. Pellentesque et rhoncus sapien, sed ullamcorper justo.</p>
-              <hr>
-              <ul class="list-inline share-list">
-                <li><i class="fa fa-bell"></i><a href="#">3 Notifications</a></li>
-                <li><i class="fa fa-group"></i><a href="#">25 Followers</a></li>
-                <li><i class="fa fa-share"></i><a href="#">Share</a></li>
-              </ul>
-            </div>
-          </div>
-        </div><!--/end row-->
-        <!--End Profile Blog-->
+        <%= render partial: "card_row", collection: @impressions, as: :impression %>
 
         <button type="button" class="btn-u btn-u-default btn-block text-center">Load More</button>
         <!--End Profile Blog-->
