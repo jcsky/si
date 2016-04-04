@@ -34,6 +34,7 @@ gem 'devise'
 
 # admin
 gem 'activeadmin', '~> 1.0.0.pre2'
+gem 'draper'
 
 group :development do
   gem 'web-console', '~> 2.0'
