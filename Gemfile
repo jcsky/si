@@ -32,6 +32,9 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'devise'
 
+# admin
+gem 'activeadmin', '~> 1.0.0.pre2'
+
 group :development do
   gem 'web-console', '~> 2.0'
   gem 'annotate'
