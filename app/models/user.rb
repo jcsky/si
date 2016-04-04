@@ -1,9 +1,9 @@
 class User < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable,
          :omniauthable, :omniauth_providers => [:facebook]
+
+  acts_as_voter     # relationship :votes will be obscured by the same named relationship from acts_as_voteable :(
 
   def self.from_omniauth(auth)
     # Case 1: Find existing user by facebook uid

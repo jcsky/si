@@ -36,6 +36,9 @@ gem 'devise'
 gem 'activeadmin', '~> 1.0.0.pre2'
 gem 'draper'
 
+# vote
+gem 'thumbs_up'
+
 group :development do
   gem 'web-console', '~> 2.0'
   gem 'annotate'
