@@ -26,18 +26,17 @@ gem 'aasm'
 gem 'phone'
 gem 'bcrypt', '~> 3.1.7'
 gem 'settingslogic'
+gem 'thumbs_up'
+gem 'acts-as-taggable-on', '~> 3.4'
 
 # user & login provider
 gem 'omniauth'
 gem 'omniauth-facebook'
-gem 'devise'
+gem 'devise', '~> 3.5'
 
 # admin
 gem 'activeadmin', '~> 1.0.0.pre2'
 gem 'draper'
-
-# vote
-gem 'thumbs_up'
 
 group :development do
   gem 'web-console', '~> 2.0'

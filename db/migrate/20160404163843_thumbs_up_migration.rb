@@ -1,10 +1,12 @@
 class ThumbsUpMigration < ActiveRecord::Migration
   def self.up
-    create_table :votes, :force => true do |t|
+    enable_extension 'uuid-ossp'
+    create_table(:votes, id: :uuid, :force => true) do |t|
 
       t.boolean    :vote,     :default => false,    :null => false
-      t.references :voteable, :polymorphic => true, :null => false
-      t.references :voter,    :polymorphic => true
+      t.references :voteable, :polymorphic => true, :null => false, type: :uuid
+      t.references :voter,    :polymorphic => true, type: :uuid
+
       t.timestamps
 
     end

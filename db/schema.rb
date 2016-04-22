@@ -11,19 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160404163843) do
+ActiveRecord::Schema.define(version: 20160404205438) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "uuid-ossp"
   enable_extension "hstore"
 
-  create_table "active_admin_comments", force: :cascade do |t|
+  create_table "active_admin_comments", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.string   "namespace"
     t.text     "body"
-    t.string   "resource_id",   null: false
+    t.uuid     "resource_id",   null: false
     t.string   "resource_type", null: false
-    t.integer  "author_id"
+    t.uuid     "author_id"
     t.string   "author_type"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20160404163843) do
   add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
   add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
 
-  create_table "admin_users", force: :cascade do |t|
+  create_table "admin_users", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
@@ -71,6 +71,27 @@ ActiveRecord::Schema.define(version: 20160404163843) do
   end
 
   add_index "impressions", ["name"], name: "index_impressions_on_name", using: :btree
+  add_index "impressions", ["user_id"], name: "index_impressions_on_user_id", using: :btree
+
+  create_table "taggings", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
+    t.uuid     "tag_id"
+    t.uuid     "taggable_id"
+    t.string   "taggable_type"
+    t.uuid     "tagger_id"
+    t.string   "tagger_type"
+    t.string   "context",       limit: 128
+    t.datetime "created_at"
+  end
+
+  add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true, using: :btree
+  add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context", using: :btree
+
+  create_table "tags", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
+    t.string  "name"
+    t.integer "taggings_count", default: 0
+  end
+
+  add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
   create_table "users", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -98,11 +119,11 @@ ActiveRecord::Schema.define(version: 20160404163843) do
   add_index "users", ["fb_uid"], name: "index_users_on_fb_uid", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
-  create_table "votes", force: :cascade do |t|
+  create_table "votes", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.boolean  "vote",          default: false, null: false
-    t.integer  "voteable_id",                   null: false
+    t.uuid     "voteable_id",                   null: false
     t.string   "voteable_type",                 null: false
-    t.integer  "voter_id"
+    t.uuid     "voter_id"
     t.string   "voter_type"
     t.datetime "created_at"
     t.datetime "updated_at"
