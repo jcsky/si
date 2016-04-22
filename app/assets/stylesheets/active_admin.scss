@@ -8,10 +8,22 @@
 // $sidebar-width: 242px;
 
 // Active Admin's got SASS!
+
 @import "active_admin/mixins";
 @import "active_admin/base";
+@import "active_admin/select2/base";
 
-// Overriding any non-variable SASS must be done after the fact.
-// For example, to change the default status-tag color:
-//
-//   .status_tag { background: #6090DB; }
+
+body.active_admin a.select2-choice {
+	text-decoration: none;
+	color: #000;
+}
+
+body.active_admin .select2-container {
+	min-width: 800px;
+}
+
+body.active_admin #sidebar .select2-container {
+	max-width: 300px;
+	min-width: 100px;
+}

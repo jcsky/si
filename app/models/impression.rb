@@ -22,5 +22,8 @@ class Impression < ActiveRecord::Base
   store_accessor :web_pages
   belongs_to :owner, class_name: "User", foreign_key: "user_id"
   acts_as_voteable
-  
+
+  acts_as_taggable # Alias for acts_as_taggable_on :tags
+  acts_as_taggable_on :tags, :current_jobs, :current_locations, :parties
+  accepts_nested_attributes_for :taggings
 end
