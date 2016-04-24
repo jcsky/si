@@ -8,8 +8,6 @@ class CreateImpressions < ActiveRecord::Migration
       t.string  :name
       t.text    :description
       t.string  :impression_type
-      t.string  :gender
-      t.date    :birthday
       t.hstore  :infos
       t.hstore  :web_pages
       t.uuid    :user_id
