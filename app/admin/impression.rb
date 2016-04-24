@@ -5,7 +5,6 @@ ActiveAdmin.register Impression do
 
   form do |f|
     f.inputs "Impression Details" do
-      # f.input :reputation
       f.input :official_name
       f.input :name
       f.input :description
@@ -14,11 +13,31 @@ ActiveAdmin.register Impression do
       f.input :birthday
       f.input :infos
       f.input :web_pages
-      f.input :tags,  # Show all tags AND checked already selected one (by relations through :tags - input must named :tags)
-              as: :select2_multiple, new_record: true,
+      f.input :tags,
+              as: :select,
+              input_html: {class: 'select2able'},
               collection: ActsAsTaggableOn::Tag.select(:id, :name).all
     end
     f.actions
+  end
+
+  controller do
+    before_action :create_tags, only: [:create, :update]
+
+    private
+
+    def create_tags
+      tag_ids = params[:impression][:tag_ids]
+
+      tag_ids.each_index do |i|
+        tag_id = tag_ids[i]
+        if tag_id.present? && ActsAsTaggableOn::Tag.where(id: tag_id).blank?
+          tag = ActsAsTaggableOn::Tag.create(name: tag_id)
+          params[:impression][:tag_ids][i] = tag.id
+        end
+      end
+    end
+
   end
 
   show do
@@ -38,10 +57,6 @@ ActiveAdmin.register Impression do
           span tag
         end
       end
-      #
-      # row :image do
-      #   image_tag ad.image.url
-      # end
     end
     active_admin_comments
   end
