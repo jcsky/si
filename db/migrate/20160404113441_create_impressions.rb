@@ -11,10 +11,13 @@ class CreateImpressions < ActiveRecord::Migration
       t.hstore  :infos
       t.hstore  :web_pages
       t.uuid    :user_id
+      t.references :profile, :polymorphic => true, :null => false, type: :uuid
       t.timestamps null: false
     end
 
     add_index :impressions, :name
     add_index :impressions, :user_id
+    add_index :impressions, :profile_id
+    add_index :impressions, :profile_type
   end
 end
