@@ -56,20 +56,19 @@ ActiveRecord::Schema.define(version: 20160404205438) do
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "impressions", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
-    t.integer  "reputation"
+    t.integer  "reputation",      default: 0
     t.string   "official_name"
-    t.string   "name"
+    t.string   "name",                        null: false
     t.text     "description"
     t.string   "impression_type"
-    t.string   "gender"
-    t.date     "birthday"
     t.hstore   "infos"
     t.hstore   "web_pages"
     t.uuid     "user_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
+  add_index "impressions", ["impression_type"], name: "index_impressions_on_impression_type", using: :btree
   add_index "impressions", ["name"], name: "index_impressions_on_name", using: :btree
   add_index "impressions", ["user_id"], name: "index_impressions_on_user_id", using: :btree
 

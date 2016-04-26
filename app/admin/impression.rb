@@ -1,7 +1,7 @@
 ActiveAdmin.register Impression do
   permit_params :reputation, :official_name, :name, :description,
                 :impression_type, :gender, :birthday, :infos, :web_pages,
-                :user_id, :tag_ids => []
+                :user_id, :website, :fb_fan_page, :email, :tag_ids => []
 
   form do |f|
     f.inputs "Impression Details" do
@@ -10,9 +10,10 @@ ActiveAdmin.register Impression do
       f.input :description
       f.input :impression_type, collection: ['politician'], include_blank: false
       f.input :gender, collection: [['男', 'male'], ['女', 'female']], include_blank: false
-      f.input :birthday
-      f.input :infos
-      f.input :web_pages
+      f.input :birthday, :as => :datepicker
+      f.input :email
+      f.input :website
+      f.input :fb_fan_page
       f.input :tags,
               as: :select,
               input_html: {class: 'select2able'},

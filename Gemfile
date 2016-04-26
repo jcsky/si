@@ -37,7 +37,7 @@ gem 'devise', '~> 3.5'
 # admin
 gem 'activeadmin', '~> 1.0.0.pre2'
 gem 'draper'
-gem "select2-rails"
+gem 'select2-rails'
 
 group :development do
   gem 'web-console', '~> 2.0'

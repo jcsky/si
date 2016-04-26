@@ -8,8 +8,6 @@
 #  name            :string
 #  description     :text
 #  impression_type :string
-#  gender          :string
-#  birthday        :date
 #  infos           :hstore
 #  web_pages       :hstore
 #  user_id         :uuid
@@ -18,12 +16,14 @@
 #
 
 class Impression < ActiveRecord::Base
-  store_accessor :infos
-  store_accessor :web_pages
+  store_accessor :infos, [ :gender, :birthday, :email ]
+  store_accessor :web_pages, [ :fb_fan_page, :website ]
   belongs_to :owner, class_name: "User", foreign_key: "user_id"
   acts_as_voteable
 
   acts_as_taggable # Alias for acts_as_taggable_on :tags
-  acts_as_taggable_on :tags, :current_jobs, :current_locations, :parties
+  acts_as_taggable_on :tags, :parties
   accepts_nested_attributes_for :taggings
+
+  validates :name, presence: true
 end

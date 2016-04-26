@@ -8,8 +8,6 @@
 #  name            :string
 #  description     :text
 #  impression_type :string
-#  gender          :string
-#  birthday        :date
 #  infos           :hstore
 #  web_pages       :hstore
 #  user_id         :uuid
