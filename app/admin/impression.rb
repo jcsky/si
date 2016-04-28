@@ -1,7 +1,7 @@
 ActiveAdmin.register Impression do
   permit_params :reputation, :official_name, :name, :description,
                 :impression_type, :gender, :birthday, :infos, :web_pages,
-                :user_id, :website, :fb_fan_page, :email, :tag_ids => []
+                :user_id, :website, :fb_fan_page, :email, tag_ids: [], party_ids: []
 
   form do |f|
     f.inputs "Impression Details" do
@@ -14,29 +14,38 @@ ActiveAdmin.register Impression do
       f.input :email
       f.input :website
       f.input :fb_fan_page
-      f.input :tags,
+      f.input :tags, label: "tag",
               as: :select,
               input_html: {class: 'select2able'},
-              collection: ActsAsTaggableOn::Tag.select(:id, :name).all
+              collection: ActsAsTaggableOn::Tag.all.pluck(:name)
+      f.input :parties, label: "parties tag",
+              as: :select,
+              input_html: {class: 'select2able'},
+              collection: ActsAsTaggableOn::Tagging.where(context: "party", taggable_type: "Impression").includes(:tag).pluck(:name)
     end
     f.actions
   end
 
   controller do
-    before_action :create_tags, only: [:create, :update]
 
-    private
+    def create
+      impression_params = permitted_params[:impression]
+      tags = impression_params.extract!(:tag_ids)
+      parties = impression_params.extract!(:party_ids)
+      impression = Impression.new(impression_params)
+      impression.tag_list = tags["tag_ids"]
+      impression.set_tag_list_on(:party, parties["party_ids"])
+      impression.save
+    end
 
-    def create_tags
-      tag_ids = params[:impression][:tag_ids]
-
-      tag_ids.each_index do |i|
-        tag_id = tag_ids[i]
-        if tag_id.present? && ActsAsTaggableOn::Tag.where(id: tag_id).blank?
-          tag = ActsAsTaggableOn::Tag.create(name: tag_id)
-          params[:impression][:tag_ids][i] = tag.id
-        end
-      end
+    def update
+      impression_params = permitted_params[:impression]
+      tags = impression_params.extract!(:tag_ids)
+      parties = impression_params.extract!(:party_ids)
+      impression = Impression.find(params[:id])
+      impression.tag_list = tags["tag_ids"]
+      impression.set_tag_list_on(:party, parties["party_ids"])
+      impression.update(impression_params)
     end
 
   end
@@ -55,6 +64,11 @@ ActiveAdmin.register Impression do
       row :user
       row 'Tags' do
         impression.tags.each do |tag|
+          span tag
+        end
+      end
+      row 'Tags on party' do
+        impression.tags_on(:party).each do |tag|
           span tag
         end
       end
