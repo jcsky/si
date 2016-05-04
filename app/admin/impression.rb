@@ -1,10 +1,11 @@
 ActiveAdmin.register Impression do
   permit_params :reputation, :official_name, :name, :description,
                 :impression_type, :gender, :birthday, :infos, :web_pages,
-                :user_id, :website, :fb_fan_page, :email, tag_ids: [], party_ids: []
+                :user_id, :website, :fb_fan_page, :email
 
   form do |f|
     f.inputs "Impression Details" do
+      # raise 'p'
       f.input :official_name
       f.input :name
       f.input :description
@@ -14,14 +15,16 @@ ActiveAdmin.register Impression do
       f.input :email
       f.input :website
       f.input :fb_fan_page
-      f.input :tags, label: "tag",
+      f.input :tag_list, label: "tag_list",
               as: :select,
+              multiple: true,
               input_html: {class: 'select2able'},
               collection: ActsAsTaggableOn::Tag.all.pluck(:name)
-      f.input :parties, label: "parties tag",
+      f.input :party_list, label: "party_list",
               as: :select,
+              multiple: true,
               input_html: {class: 'select2able'},
-              collection: ActsAsTaggableOn::Tagging.where(context: "party", taggable_type: "Impression").includes(:tag).pluck(:name)
+              collection: ActsAsTaggableOn::Tag.all.pluck(:name)
     end
     f.actions
   end
@@ -29,23 +32,28 @@ ActiveAdmin.register Impression do
   controller do
 
     def create
-      impression_params = permitted_params[:impression]
-      tags = impression_params.extract!(:tag_ids)
-      parties = impression_params.extract!(:party_ids)
-      impression = Impression.new(impression_params)
-      impression.tag_list = tags["tag_ids"]
-      impression.set_tag_list_on(:party, parties["party_ids"])
-      impression.save
+      @impression = Impression.new(impression_params)
+      edit_tag
+      @impression.save
+      redirect_to admin_impression_path(@impression)
     end
 
     def update
-      impression_params = permitted_params[:impression]
-      tags = impression_params.extract!(:tag_ids)
-      parties = impression_params.extract!(:party_ids)
-      impression = Impression.find(params[:id])
-      impression.tag_list = tags["tag_ids"]
-      impression.set_tag_list_on(:party, parties["party_ids"])
-      impression.update(impression_params)
+      @impression = Impression.find(params[:id])
+      edit_tag
+      @impression.update(impression_params)
+      redirect_to admin_impressions_path
+    end
+
+    private
+
+    def impression_params
+      permitted_params[:impression]
+    end
+
+    def edit_tag
+      @impression.tag_list = params[:impression]["tag_list"]
+      @impression.set_tag_list_on(:party, params[:impression]["party_list"])
     end
 
   end
