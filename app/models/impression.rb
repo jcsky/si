@@ -22,8 +22,10 @@ class Impression < ActiveRecord::Base
   acts_as_voteable
 
   acts_as_taggable # Alias for acts_as_taggable_on :tags
-  acts_as_taggable_on :tags, :parties
+  acts_as_taggable_on :tags, :parties, :jobs, :past_jobs, :electoral_districts
   accepts_nested_attributes_for :taggings
 
   validates :name, presence: true
+
+  scope :politician, -> { where(impression_type: "politician") }
 end

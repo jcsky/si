@@ -2,10 +2,29 @@ ActiveAdmin.register Impression do
   permit_params :reputation, :official_name, :name, :description,
                 :impression_type, :gender, :birthday, :infos, :web_pages,
                 :user_id, :website, :fb_fan_page, :email
+  scope  :politician
+
+  index do
+    id_column
+    column :reputation
+    column :official_name
+    column :name
+    column :impression_type
+    column :gender
+    column :birthday
+    column :fb_fan_page
+    column :user_id
+    column :tag_list
+    column :party_list
+    column :job_list
+    column :past_job_list
+    column :electoral_district_list
+    actions
+  end
+
 
   form do |f|
     f.inputs "Impression Details" do
-      # raise 'p'
       f.input :official_name
       f.input :name
       f.input :description
@@ -16,15 +35,20 @@ ActiveAdmin.register Impression do
       f.input :website
       f.input :fb_fan_page
       f.input :tag_list, label: "tag_list",
-              as: :select,
-              multiple: true,
-              input_html: {class: 'select2able'},
-              collection: ActsAsTaggableOn::Tag.all.pluck(:name)
+              as: :select, multiple: true, input_html: {class: 'select2able'},
+              collection: Impression.tag_counts.pluck(:name)
       f.input :party_list, label: "party_list",
-              as: :select,
-              multiple: true,
-              input_html: {class: 'select2able'},
-              collection: ActsAsTaggableOn::Tag.all.pluck(:name)
+              as: :select, multiple: true, input_html: {class: 'select2able'},
+              collection: Impression.party_counts.pluck(:name)
+      f.input :job_list, label: "job_list",
+              as: :select, multiple: true, input_html: {class: 'select2able'},
+              collection: Impression.job_counts.pluck(:name)
+      f.input :past_job_list, label: "past_job_list",
+              as: :select, multiple: true, input_html: {class: 'select2able'},
+              collection: Impression.past_job_counts.pluck(:name)
+      f.input :electoral_district_list, label: "electoral_district_list",
+              as: :select, multiple: true, input_html: {class: 'select2able'},
+              collection: Impression.electoral_district_counts.pluck(:name)
     end
     f.actions
   end
@@ -52,8 +76,11 @@ ActiveAdmin.register Impression do
     end
 
     def edit_tag
-      @impression.tag_list = params[:impression]["tag_list"]
-      @impression.set_tag_list_on(:party, params[:impression]["party_list"])
+      @impression.tag_list = params[:impression]["tag_list"].reject(&:empty?)
+      @impression.set_tag_list_on(:party, params[:impression]["party_list"]).reject(&:empty?)
+      @impression.set_tag_list_on(:job, params[:impression]["job_list"]).reject(&:empty?)
+      @impression.set_tag_list_on(:electoral_district, params[:impression]["electoral_district_list"]).reject(&:empty?)
+      @impression.set_tag_list_on(:past_job, params[:impression]["past_job_list"]).reject(&:empty?)
     end
 
   end
@@ -70,16 +97,11 @@ ActiveAdmin.register Impression do
       row :infos
       row :web_pages
       row :user
-      row 'Tags' do
-        impression.tags.each do |tag|
-          span tag
-        end
-      end
-      row 'Tags on party' do
-        impression.tags_on(:party).each do |tag|
-          span tag
-        end
-      end
+      row :tag_list
+      row :party_list
+      row :job_list
+      row :past_job_list
+      row :electoral_district_list
     end
     active_admin_comments
   end
