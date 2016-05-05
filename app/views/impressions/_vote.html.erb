@@ -1,12 +1,13 @@
 <ul class="list-inline share-list" id="<%= dom_id(impression) %>_vote">
-  <li>
-    <%= link_to like_impression_path(impression), remote: true do %>
-      <i class="glyphicon glyphicon-heart"></i><%= impression.votes_for %> 喜歡
-    <% end %>
-  </li>
-  <li>
+  <li><strong id="<%= dom_id(impression) %>_reputation"><%= impression.reputation || 0 %></strong></li>
+  <li class="pull-right">
     <%= link_to unlike_impression_path(impression), remote: true do %>
       <i class="glyphicon glyphicon-heart"></i><%= impression.votes_against %> 討厭
+    <% end %>
+  </li>
+  <li class="pull-right">
+    <%= link_to like_impression_path(impression), remote: true do %>
+      <i class="glyphicon glyphicon-heart"></i><%= impression.votes_for %> 喜歡
     <% end %>
   </li>
 </ul>

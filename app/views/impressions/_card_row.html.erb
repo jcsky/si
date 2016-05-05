@@ -3,23 +3,24 @@
     <div class="profile-blog">
       <img class="rounded-x" src="assets/img/testimonials/img1.jpg" alt="">
       <div class="name-location">
-        <strong><%= impression.name %> 黨黴</strong>
-        <strong id="<%= dom_id(impression) %>_reputation"><%= impression.reputation || 0 %></strong>
-        <span>市長</span>
-        <span><i class="fa fa-map-marker"></i><a href="#">台南市</a> <a href="#">US</a></span>
+        <strong><%= impression.name %></strong>
+        <span><%= impression.job_list %></span>
+        <span><%= impression.party_list %></span>
+        <span><i class="fa fa-map-marker"></i><%= impression.electoral_district_list %></span>
       </div>
       <div class="clearfix margin-bottom-20"></div>
-      <p>Donec non dignissim eros. Mauris faucibus turpis volutpat sagittis rhoncus. Pellentesque et rhoncus sapien, sed ullamcorper justo.</p>
+      <p><%= impression.job_list %></p>
       <hr>
       <ul class="list-inline share-list" id="<%= dom_id(impression) %>_vote">
-        <li>
-          <%= link_to like_impression_path(impression), remote: true do %>
-            <i class="glyphicon glyphicon-heart"></i><%= impression.votes_for %> 喜歡
-          <% end %>
-        </li>
-        <li>
+        <li><strong id="<%= dom_id(impression) %>_reputation"><%= impression.reputation || 0 %></strong></li>
+        <li class="pull-right">
           <%= link_to unlike_impression_path(impression), remote: true do %>
             <i class="glyphicon glyphicon-heart"></i><%= impression.votes_against %> 討厭
+          <% end %>
+        </li>
+        <li class="pull-right">
+          <%= link_to like_impression_path(impression), remote: true do %>
+            <i class="glyphicon glyphicon-heart"></i><%= impression.votes_for %> 喜歡
           <% end %>
         </li>
       </ul>

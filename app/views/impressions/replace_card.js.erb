@@ -2,6 +2,5 @@
   <% flash[:notice] = "you must be login" %>
   window.location.href = '<%= j(user_omniauth_authorize_url(:facebook)) %>';
 <% else %>
-  $("#<%= dom_id(@impression) %>_reputation").html("<%= @impression.reputation %>")
   $("#<%= dom_id(@impression) %>_vote").html("<%= j(render :partial => "vote", :locals => {:impression => @impression}) %>")
 <% end %>
