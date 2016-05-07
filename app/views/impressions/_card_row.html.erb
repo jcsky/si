@@ -12,19 +12,7 @@
       <p><%= impression.job_list %></p>
       <%= link_to "更多", impression_path(impression) %>
       <hr>
-      <ul class="list-inline share-list" id="<%= dom_id(impression) %>_vote">
-        <li><strong id="<%= dom_id(impression) %>_reputation"><%= impression.reputation || 0 %></strong></li>
-        <li class="pull-right">
-          <%= link_to unlike_impression_path(impression), remote: true do %>
-            <i class="glyphicon glyphicon-heart"></i><%= impression.votes_against %> 討厭
-          <% end %>
-        </li>
-        <li class="pull-right">
-          <%= link_to like_impression_path(impression), remote: true do %>
-            <i class="glyphicon glyphicon-heart"></i><%= impression.votes_for %> 喜歡
-          <% end %>
-        </li>
-      </ul>
+      <%= render partial: "vote", locals: { impression: impression } %>
     </div>
   </div>
 </div><!--/end row-->
