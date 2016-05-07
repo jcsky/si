@@ -33,6 +33,7 @@ ActiveAdmin.register Impression do
       f.input :birthday, :as => :datepicker
       f.input :email
       f.input :website
+      f.input :wiki
       f.input :fb_fan_page
       f.input :tag_list, label: "tag_list",
               as: :select, multiple: true, input_html: {class: 'select2able'},
