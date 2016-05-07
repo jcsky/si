@@ -17,7 +17,7 @@
 
 class Impression < ActiveRecord::Base
   store_accessor :infos, [ :gender, :birthday, :email ]
-  store_accessor :web_pages, [ :fb_fan_page, :website ]
+  store_accessor :web_pages, [ :fb_fan_page, :website, :wiki ]
   belongs_to :owner, class_name: "User", foreign_key: "user_id"
   acts_as_voteable
 
@@ -28,4 +28,9 @@ class Impression < ActiveRecord::Base
   validates :name, presence: true
 
   scope :politician, -> { where(impression_type: "politician") }
+
+  def age
+    Date.today.year - birthday.to_date.year if birthday.present?
+  end
+
 end

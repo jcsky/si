@@ -17,7 +17,7 @@
 
 class ImpressionsController < ApplicationController
   layout "home"
-  before_action :set_impression, only: [:like, :unlike]
+  before_action :set_impression, only: [:show, :like, :unlike]
 
   def index
     @impressions = Impression.all

@@ -4,14 +4,52 @@
 <div class="container content profile">
   <div class="row">
 
-    <!-- Profile Content -->
-    <div class="col-md-6 col-md-push-3">
-      <div class="profile-body margin-bottom-20">
 
-        <button type="button" class="btn-u btn-u-default btn-block text-center">Load More</button>
-        <!--End Profile Blog-->
-      </div>
-    </div>
-    <!-- End Profile Content -->
+		<!-- Profile Content -->
+		<div class="col-md-8 col-md-push-2">
+			<div class="profile-body">
+				<div class="profile-bio">
+					<div class="row">
+						<div class="col-md-5">
+							<img class="img-responsive md-margin-bottom-10" src="assets/img/team/img32-md.jpg" alt="">
+						</div>
+						<div class="col-md-7">
+							<h2><%= @impression.name %></h2>
+              <span><strong>現任: </strong><%= @impression.job_list %></span>
+							<span><strong>曾任: </strong><%= @impression.past_job_list %></span>
+              <br>
+							<span><strong>姓別: </strong><%= @impression.gender %></span>
+							<span><strong>年齡: </strong><%= @impression.age %></span>
+							<span><strong>生日: </strong><%= @impression.birthday %></span>
+							<span><strong>Email: </strong><%= @impression.email %></span>
+              <br>
+							<span><strong>website: </strong><%= @impression.website %></span>
+              <span><strong>FB 粉絲頁: </strong><%= @impression.fb_fan_page %></span>
+							<span><strong>wiki: </strong><%= @impression.wiki %></span>
+							<hr>
+							<p><%= @impression.description %></p>
+              <hr>
+
+              <ul class="list-inline share-list" id="<%= dom_id(@impression) %>_vote">
+                <li><strong id="<%= dom_id(@impression) %>_reputation"><%= @impression.reputation || 0 %></strong></li>
+                <li class="pull-right">
+                  <%= link_to unlike_impression_path(@impression), remote: true do %>
+                    <i class="glyphicon glyphicon-heart"></i><%= @impression.votes_against %> 討厭
+                  <% end %>
+                </li>
+                <li class="pull-right">
+                  <%= link_to like_impression_path(@impression), remote: true do %>
+                    <i class="glyphicon glyphicon-heart"></i><%= @impression.votes_for %> 喜歡
+                  <% end %>
+                </li>
+              </ul>
+
+						</div>
+					</div>
+				</div><!--/end row-->
+			</div>
+		</div>
+		<!-- End Profile Content -->
+
   </div><!--/end row-->
 </div>
