@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160404205438) do
+ActiveRecord::Schema.define(version: 20160507061223) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +55,18 @@ ActiveRecord::Schema.define(version: 20160404205438) do
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
 
+  create_table "impression_politician_jobs", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
+    t.uuid     "impression_id"
+    t.uuid     "politician_job_id"
+    t.date     "started_on"
+    t.date     "ended_on"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  add_index "impression_politician_jobs", ["impression_id"], name: "index_impression_politician_jobs_on_impression_id", using: :btree
+  add_index "impression_politician_jobs", ["politician_job_id"], name: "index_impression_politician_jobs_on_politician_job_id", using: :btree
+
   create_table "impressions", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.integer  "reputation",      default: 0
     t.string   "official_name"
@@ -71,6 +83,20 @@ ActiveRecord::Schema.define(version: 20160404205438) do
   add_index "impressions", ["impression_type"], name: "index_impressions_on_impression_type", using: :btree
   add_index "impressions", ["name"], name: "index_impressions_on_name", using: :btree
   add_index "impressions", ["user_id"], name: "index_impressions_on_user_id", using: :btree
+
+  create_table "politician_jobs", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
+    t.string   "organization"
+    t.string   "job_title"
+    t.string   "electoral_region"
+    t.integer  "th"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "politician_jobs", ["electoral_region"], name: "index_politician_jobs_on_electoral_region", using: :btree
+  add_index "politician_jobs", ["job_title"], name: "index_politician_jobs_on_job_title", using: :btree
+  add_index "politician_jobs", ["organization"], name: "index_politician_jobs_on_organization", using: :btree
+  add_index "politician_jobs", ["th"], name: "index_politician_jobs_on_th", using: :btree
 
   create_table "taggings", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.uuid     "tag_id"
