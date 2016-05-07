@@ -1,0 +1,42 @@
+
+<div class="margin-bottom-60 sm-margin-bottom-10"></div>
+
+<div class="container content profile">
+  <div class="row">
+
+
+		<!-- Profile Content -->
+		<div class="col-md-8 col-md-push-2">
+			<div class="profile-body">
+				<div class="profile-bio">
+					<div class="row">
+						<div class="col-md-5">
+							<img class="img-responsive md-margin-bottom-10" src="assets/img/team/img32-md.jpg" alt="">
+						</div>
+						<div class="col-md-7">
+							<h2><%= @impression.name %></h2>
+              <span><strong>現任: </strong><%= @impression.job_list %></span>
+							<span><strong>曾任: </strong><%= @impression.past_job_list %></span>
+              <br>
+							<span><strong>姓別: </strong><%= @impression.gender %></span>
+							<span><strong>年齡: </strong><%= @impression.age %></span>
+							<span><strong>生日: </strong><%= @impression.birthday %></span>
+							<span><strong>Email: </strong><%= @impression.email %></span>
+              <br>
+							<span><strong>website: </strong><%= @impression.website %></span>
+              <span><strong>FB 粉絲頁: </strong><%= @impression.fb_fan_page %></span>
+							<span><strong>wiki: </strong><%= @impression.wiki %></span>
+              <br>
+              <p><%= @impression.description %></p>
+              <hr>
+              <%= render partial: "vote", locals: { impression: @impression } %>
+
+						</div>
+					</div>
+				</div><!--/end row-->
+			</div>
+		</div>
+		<!-- End Profile Content -->
+
+  </div><!--/end row-->
+</div>

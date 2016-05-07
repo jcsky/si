@@ -17,11 +17,13 @@
 
 class ImpressionsController < ApplicationController
   layout "home"
-  before_action :set_impression, only: [:like, :unlike]
+  before_action :set_impression, only: [:show, :like, :unlike]
 
   def index
     @impressions = Impression.all
   end
+
+  def show; end
 
   def like
     if current_user && !current_user.voted_for?(@impression)
