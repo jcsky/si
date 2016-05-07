@@ -23,6 +23,8 @@ class ImpressionsController < ApplicationController
     @impressions = Impression.all
   end
 
+  def show; end
+
   def like
     if current_user && !current_user.voted_for?(@impression)
       current_user.vote_exclusively_for(@impression)

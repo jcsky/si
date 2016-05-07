@@ -10,6 +10,7 @@
       </div>
       <div class="clearfix margin-bottom-20"></div>
       <p><%= impression.job_list %></p>
+      <%= link_to "更多", impression_path(impression) %>
       <hr>
       <ul class="list-inline share-list" id="<%= dom_id(impression) %>_vote">
         <li><strong id="<%= dom_id(impression) %>_reputation"><%= impression.reputation || 0 %></strong></li>
