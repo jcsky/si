@@ -86,7 +86,7 @@ ActiveRecord::Schema.define(version: 20160507061223) do
 
   create_table "politician_jobs", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.string   "organization"
-    t.string   "job_title"
+    t.string   "title"
     t.string   "electoral_region"
     t.integer  "th"
     t.datetime "created_at",       null: false
@@ -94,9 +94,9 @@ ActiveRecord::Schema.define(version: 20160507061223) do
   end
 
   add_index "politician_jobs", ["electoral_region"], name: "index_politician_jobs_on_electoral_region", using: :btree
-  add_index "politician_jobs", ["job_title"], name: "index_politician_jobs_on_job_title", using: :btree
   add_index "politician_jobs", ["organization"], name: "index_politician_jobs_on_organization", using: :btree
   add_index "politician_jobs", ["th"], name: "index_politician_jobs_on_th", using: :btree
+  add_index "politician_jobs", ["title"], name: "index_politician_jobs_on_title", using: :btree
 
   create_table "taggings", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.uuid     "tag_id"

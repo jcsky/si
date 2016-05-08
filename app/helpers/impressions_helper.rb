@@ -3,9 +3,9 @@
 # Table name: impressions
 #
 #  id              :uuid             not null, primary key
-#  reputation      :integer
+#  reputation      :integer          default(0)
 #  official_name   :string
-#  name            :string
+#  name            :string           not null
 #  description     :text
 #  impression_type :string
 #  infos           :hstore

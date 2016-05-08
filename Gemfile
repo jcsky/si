@@ -28,6 +28,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'settingslogic'
 gem 'thumbs_up'
 gem 'acts-as-taggable-on', '~> 3.4'
+gem 'rest-client'
 
 # user & login provider
 gem 'omniauth'
