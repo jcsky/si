@@ -25,7 +25,7 @@ class Impression < ActiveRecord::Base
   accepts_nested_attributes_for :taggings
 
   belongs_to :owner, class_name: "User", foreign_key: "user_id"
-  has_many :impression_politician_jobs
+  has_many :impression_politician_jobs, dependent: :destroy
   has_many :politician_jobs, through: :impression_politician_jobs
 
   validates :name, presence: true
