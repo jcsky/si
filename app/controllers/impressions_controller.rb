@@ -3,9 +3,9 @@
 # Table name: impressions
 #
 #  id              :uuid             not null, primary key
-#  reputation      :integer
+#  reputation      :integer          default(0)
 #  official_name   :string
-#  name            :string
+#  name            :string           not null
 #  description     :text
 #  impression_type :string
 #  infos           :hstore
@@ -18,9 +18,11 @@
 class ImpressionsController < ApplicationController
   layout "home"
   before_action :set_impression, only: [:show, :like, :unlike]
+  before_action :set_nav_bar_search_param, only: [:index, :show]
 
   def index
-    @impressions = Impression.all
+    @q = Impression.ransack(params[:q])
+    @impressions = @q.result.page(params[:page])
   end
 
   def show; end

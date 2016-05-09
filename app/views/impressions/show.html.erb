@@ -11,12 +11,11 @@
 				<div class="profile-bio">
 					<div class="row">
 						<div class="col-md-5">
-							<img class="img-responsive md-margin-bottom-10" src="assets/img/team/img32-md.jpg" alt="">
+							<img class="img-responsive md-margin-bottom-10" src="<%= @impression.image %>" alt="">
 						</div>
 						<div class="col-md-7">
 							<h2><%= @impression.name %></h2>
-              <span><strong>現任: </strong><%= @impression.job_list %></span>
-							<span><strong>曾任: </strong><%= @impression.past_job_list %></span>
+							<span><strong>曾任: </strong><%= @impression.politician_job_names %></span>
               <br>
 							<span><strong>姓別: </strong><%= @impression.gender %></span>
 							<span><strong>年齡: </strong><%= @impression.age %></span>
@@ -27,13 +26,16 @@
               <span><strong>FB 粉絲頁: </strong><%= @impression.fb_fan_page %></span>
 							<span><strong>wiki: </strong><%= @impression.wiki %></span>
               <br>
-              <p><%= @impression.description %></p>
               <hr>
               <%= render partial: "vote", locals: { impression: @impression } %>
-
 						</div>
 					</div>
 				</div><!--/end row-->
+        <div class="row">
+          <div class="col-md-12">
+            <p><%= simple_format(@impression.description) %></p>
+          </div>
+        </div>
 			</div>
 		</div>
 		<!-- End Profile Content -->

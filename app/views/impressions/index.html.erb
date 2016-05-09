@@ -8,8 +8,7 @@
     <div class="col-md-6 col-md-push-3">
       <div class="profile-body margin-bottom-20">
         <%= render partial: "card_row", collection: @impressions, as: :impression %>
-
-        <button type="button" class="btn-u btn-u-default btn-block text-center">Load More</button>
+        <%= paginate @impressions %>
         <!--End Profile Blog-->
       </div>
     </div>
