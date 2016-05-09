@@ -2,8 +2,7 @@ set :stage, :staging
 set :rails_env, 'staging'
 set :branch, "develop"
 
-server '52.89.27.255', user: 'deploy', roles: %w{app db web}, primary: true
-
+server '52.38.247.211', user: 'deploy', roles: %w{app db web}, my_property: :my_value
 
 
 # role-based syntax
