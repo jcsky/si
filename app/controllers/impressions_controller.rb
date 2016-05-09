@@ -18,6 +18,7 @@
 class ImpressionsController < ApplicationController
   layout "home"
   before_action :set_impression, only: [:show, :like, :unlike]
+  before_action :set_nav_bar_search_param, only: [:index, :show]
 
   def index
     @q = Impression.ransack(params[:q])
