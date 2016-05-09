@@ -1,7 +1,3 @@
-//= require jquery
-//= require jquery_ujs
-//= require turbolinks
-//= require bootstrap-sprockets
 
 //= require js/plugins/fancy-box
 //= require js/plugins/owl-carousel
