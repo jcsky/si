@@ -20,7 +20,8 @@ class ImpressionsController < ApplicationController
   before_action :set_impression, only: [:show, :like, :unlike]
 
   def index
-    @impressions = Impression.all.page(params[:page])
+    @q = Impression.ransack(params[:q])
+    @impressions = @q.result.page(params[:page])
   end
 
   def show; end
