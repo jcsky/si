@@ -154,7 +154,7 @@
 }
 
 .promo-bg-pattern-v1-light {
-  background: url(../img/patterns/16.png) repeat;
+  background: image_url("img/patterns/16.png") repeat;
 }
 
 /*Promo Background Images*/
@@ -404,7 +404,7 @@
 .breadcrumbs-v2 {
   text-align: center;
   position: relative;
-  background: url(../img/bg/11.jpg) no-repeat center;
+  background: image_url("img/bg/11.jpg") no-repeat center;
 }
 
 .breadcrumbs-v2-in {
@@ -1923,7 +1923,7 @@
 .call-action-v2 {
   padding: 50px 0;
   text-align: center;
-  background: url(../img/patterns/16.png);
+  background: image_url("img/patterns/16.png");
 }
 
 .call-action-v2 h2 {
@@ -2242,7 +2242,7 @@
   height: auto;
   padding: 50px 0;
   position: relative;
-  background: url(../img/bg/11.jpg) repeat fixed;
+  background: image_url("img/bg/11.jpg") repeat fixed;
   background-size: cover;
 }
 
@@ -2499,7 +2499,7 @@
 .parallax-counter-v2 {
   position: relative;
   padding: 80px 0 60px;
-  background: url(../img/patterns/16.png) repeat fixed;
+  background: image_url("img/patterns/16.png") repeat fixed;
 }
 
 .parallax-counter-v2:after {
@@ -2684,7 +2684,7 @@
 ----------------------------------------------------*/
 .flat-bg-block-v1 {
   padding: 40px 0;
-  background: url(../img/patterns/16.png) repeat;
+  background: image_url("img/patterns/16.png") repeat;
 }
 
 .flat-bg-block-v1 .checked-list.first-child {
@@ -3061,7 +3061,7 @@
 	text-align: right;
 	text-shadow: none;
 	position: absolute;
-	filter: Alpha(opacity = 100); /*For IE*/
+	/*filter: Alpha(opacity = 100);*/
 }
 
 .testimonials .carousel-control.left {
@@ -3611,7 +3611,7 @@
     background-position: 1024px 0;
   }
 }
-@-webkit-keyframes infiniteBackground {
+/*@-webkit-keyframes infiniteBackground {
   from {
     background-position: 0 0;
   }
@@ -3626,7 +3626,7 @@
   to {
     background-position: 1024px 0;
   }
-}
+}*/
 
 .interactive-slider-v2:after {
   top: 0;
@@ -4327,11 +4327,11 @@
   transition: all 0.65s, transform 0.65s;
 }
 
-.blog-thumb .blog-thumb-hover:hover .hover-grad {
+/*.blog-thumb .blog-thumb-hover:hover .hover-grad {
   opacity: 1;
   transform 0.55s;
   transition: opacity 0.55s,
-}
+}*/
 
 /*Blog Thumb Description*/
 .blog-thumb .blog-thumb-desc {
@@ -5002,12 +5002,12 @@
   opacity: 1;
   filter: Alpha(Opacity=100);/*IE7 fix*/
 }
-
+/*
 .owl-theme .owl-controls .owl-page {
   zoom: 1;
   display: inline-block;
-  *display: inline;/*IE7 life-saver */
-}
+  *display: inline;
+}*/
 
 .owl-theme .owl-controls .owl-page span {
   width: 12px;

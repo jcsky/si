@@ -11,4 +11,4 @@
 //= require wow-animations/js/wow.min
 //= require jquery.parallax
 //= require fancybox/source/jquery.fancybox.pack
-//= require owl-carousel/owl-carousel/owl.carousel
+//= require owl.carousel
