@@ -18,6 +18,7 @@ gem 'meta-tags'
 gem 'simple_form'
 gem 'kaminari'
 gem 'bootstrap-sass', '~> 3.3.6'
+gem 'owlcarousel-rails'
 
 # backend gem
 gem 'ransack'
