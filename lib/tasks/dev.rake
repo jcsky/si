@@ -1,4 +1,7 @@
 namespace :dev do
+
+  task :dev_db_rebuild => ['db:drop:all', 'db:create', 'db:migrate', 'dev:fetch_dev_impression', 'dev:add_admin_user']
+
   desc "add admin user"
   task :add_admin_user => :environment do
     AdminUser.create!(:email => 'admin@example.com', :password => 'password', :password_confirmation => 'password')
