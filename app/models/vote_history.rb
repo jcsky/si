@@ -15,4 +15,5 @@
 class VoteHistory < ActiveRecord::Base
   serialize :upvote_user_ids, Array
   serialize :downvote_user_ids, Array
+  belongs_to :impression
 end
