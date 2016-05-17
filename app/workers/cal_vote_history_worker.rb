@@ -2,7 +2,7 @@ class CalVoteHistoryWorker
   include Sidekiq::Worker
   include Sidetiq::Schedulable
 
-  recurrence { hourly(2).minute_of_hour(05) }
+  recurrence { hourly(1).minute_of_hour(05) }
 
   def perform
     Impression.each do |impression|
