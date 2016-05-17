@@ -27,6 +27,7 @@ class Impression < ActiveRecord::Base
   belongs_to :owner, class_name: "User", foreign_key: "user_id"
   has_many :impression_politician_jobs, dependent: :destroy
   has_many :politician_jobs, through: :impression_politician_jobs
+  has_many :vote_histories
 
   validates :name, presence: true
 

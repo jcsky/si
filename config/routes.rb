@@ -18,4 +18,9 @@ Rails.application.routes.draw do
     end
   end
 
+  require 'sidekiq/web'
+  require 'sidetiq/web'
+  authenticate :admin_user, lambda { |u| u.valid? } do
+    mount Sidekiq::Web => '/admin/sidekiq'
+  end
 end

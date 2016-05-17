@@ -41,6 +41,11 @@ gem 'activeadmin', '~> 1.0.0.pre2'
 gem 'draper'
 gem 'select2-rails'
 
+# background job
+gem 'sinatra', require: nil
+gem 'sidekiq'
+gem 'sidetiq'
+
 group :development do
   gem 'web-console', '~> 2.0'
   gem 'annotate'
