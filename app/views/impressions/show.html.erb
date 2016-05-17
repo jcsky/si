@@ -15,7 +15,8 @@
 						</div>
 						<div class="col-md-7">
 							<h2><%= @impression.name %></h2>
-							<span><strong>曾任: </strong><%= @impression.politician_job_names %></span>
+							<span><strong>經歷: </strong></span>
+              <%= render partial: "job_list", collection: @impression.impression_politician_jobs, as: :job %>
               <br>
 							<span><strong>姓別: </strong><%= @impression.gender %></span>
 							<span><strong>年齡: </strong><%= @impression.age %></span>

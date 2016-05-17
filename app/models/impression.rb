@@ -38,7 +38,7 @@ class Impression < ActiveRecord::Base
   end
 
   def politician_job_names
-    politician_jobs.pluck(:title).uniq.join(",")
+    politician_jobs.pluck(:title).uniq.join(", ")
   end
 
   def electoral_region_names
