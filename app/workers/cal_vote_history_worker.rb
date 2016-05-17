@@ -5,7 +5,7 @@ class CalVoteHistoryWorker
   recurrence { hourly(1).minute_of_hour(05) }
 
   def perform
-    Impression.each do |impression|
+    Impression.all.each do |impression|
       vh = VoteHistory.find_or_create_by(impression_id: impression.id, date_on: Date.today)
       vh.reputation = impression.reputation
       vh.upvote_user_ids = impression.voters_who_voted_for.pluck(:id)
