@@ -12,3 +12,5 @@ Rails.application.config.assets.version = '1.0'
 %w( users home impressions ).each do |controller|
   Rails.application.config.assets.precompile += ["#{controller}.js", "#{controller}.scss"]
 end
+
+Rails.application.config.assets.precompile += ["highcharts"]
