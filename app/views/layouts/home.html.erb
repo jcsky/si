@@ -3,7 +3,7 @@
 <head>
   <title>Si</title>
   <%= stylesheet_link_tag "application", params[:controller] %>
-
+  <%= javascript_include_tag "chartkick", "highcharts" %>
   <%= csrf_meta_tags %>
 
   <!-- unify -->
@@ -17,7 +17,6 @@
     <%= yield %>
     <%= render partial: "common/footer" %>
   </div>
-
 
   <%= javascript_include_tag "application", params[:controller] %>
 

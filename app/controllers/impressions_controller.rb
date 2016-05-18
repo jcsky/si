@@ -25,7 +25,9 @@ class ImpressionsController < ApplicationController
     @impressions = @q.result.page(params[:page])
   end
 
-  def show; end
+  def show
+    @vote_chart_data = Hash[@impression.vote_histories.pluck(:date_on,:reputation)]
+  end
 
   def like
     if current_user && !current_user.voted_for?(@impression)

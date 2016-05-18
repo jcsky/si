@@ -19,6 +19,8 @@ gem 'simple_form'
 gem 'kaminari'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'owlcarousel-rails'
+gem 'chartkick'
+gem 'groupdate'
 
 # backend gem
 gem 'ransack'

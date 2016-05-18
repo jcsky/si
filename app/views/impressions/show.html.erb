@@ -16,7 +16,7 @@
 						<div class="col-md-7">
 							<h2><%= @impression.name %></h2>
 							<span><strong>經歷: </strong></span>
-              <%= render partial: "job_list", collection: @impression.impression_politician_jobs, as: :job %>
+              <%= render partial: "job_list", collection: @impression.politician_jobs, as: :job %>
               <br>
 							<span><strong>姓別: </strong><%= @impression.gender %></span>
 							<span><strong>年齡: </strong><%= @impression.age %></span>
@@ -32,6 +32,11 @@
 						</div>
 					</div>
 				</div><!--/end row-->
+        <div class="row">
+          <div class="col-md-12">
+            <%= line_chart @vote_chart_data, ytitle: "聲望", label: "聲望" if !@vote_chart_data.empty? %>
+          </div>
+        </div>
         <div class="row">
           <div class="col-md-12">
             <p><%= simple_format(@impression.description) %></p>
