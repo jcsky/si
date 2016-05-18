@@ -57,6 +57,7 @@ group :development do
   # deploy to server
   gem 'capistrano-rails'
   gem 'capistrano-passenger'
+  gem 'capistrano-sidekiq'
 end
 
 group :development, :test do
