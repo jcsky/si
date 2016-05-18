@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160516091438) do
+ActiveRecord::Schema.define(version: 20160518064224) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -154,6 +154,7 @@ ActiveRecord::Schema.define(version: 20160516091438) do
     t.datetime "updated_at",        null: false
   end
 
+  add_index "vote_histories", ["impression_id", "date_on"], name: "index_vote_histories_on_impression_id_and_date_on", unique: true, using: :btree
   add_index "vote_histories", ["impression_id"], name: "index_vote_histories_on_impression_id", using: :btree
 
   create_table "votes", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
