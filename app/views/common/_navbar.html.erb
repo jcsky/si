@@ -43,11 +43,7 @@
           <ul class="nav navbar-nav">
             <!-- Home -->
             <li class="dropdown">
-              <%= link_to "政治人物", impressions_path(Impression.politician) %>
-              <ul class="dropdown-menu">
-                <li><a href="#">立法委員</a></li>
-                <!-- End One Page -->
-              </ul>
+              <%= link_to "政治人物列表", impressions_path(Impression.politicians) %>
             </li>
             <!-- End Home -->
           </ul>

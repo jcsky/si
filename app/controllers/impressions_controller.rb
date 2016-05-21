@@ -22,7 +22,13 @@ class ImpressionsController < ApplicationController
 
   def index
     @q = Impression.ransack(params[:q])
-    @impressions = @q.result.page(params[:page])
+    @impressions = @q.result.best.page(params[:page])
+    @impressions.last_page? ? @next_page = nil : @next_page = @impressions.next_page
+    @load_params = {q: (params[:q] || {})}.merge(page: @next_page)
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def show

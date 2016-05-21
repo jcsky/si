@@ -31,7 +31,9 @@ class Impression < ActiveRecord::Base
 
   validates :name, presence: true
 
-  scope :politician, -> { where(impression_type: "politician") }
+  scope :politicians, -> { where(impression_type: "politician") }
+  scope :worst, -> { order(:reputation)  }
+  scope :best, -> { order(reputation: :desc)  }
 
   def age
     Date.today.year - birthday.to_date.year if birthday.present?
