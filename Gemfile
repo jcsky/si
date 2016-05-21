@@ -21,6 +21,7 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'owlcarousel-rails'
 gem 'chartkick'
 gem 'groupdate'
+gem 'font-awesome-rails'
 
 # backend gem
 gem 'ransack'
