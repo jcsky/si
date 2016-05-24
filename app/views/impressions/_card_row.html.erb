@@ -1,7 +1,7 @@
 <div class="row margin-bottom-20" id=<%= dom_id(impression) %>>
   <div class="col-sm-12 sm-margin-bottom-20">
     <div class="profile-blog">
-      <img class="rounded-x" src="<%= impression.image %>" alt="">
+      <img class="rounded-x" src="<%= impression.image.present? ? impression.image : 'https://www.gapyear.com/member_images/default_set/no-image.gif' %>" alt="">
       <div class="name-location">
         <strong><%= impression.name %></strong>
         <!-- <span><%= impression.politician_job_names %></span> -->
