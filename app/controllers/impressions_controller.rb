@@ -23,11 +23,11 @@ class ImpressionsController < ApplicationController
 
   def index
     @q = Impression.ransack(params[:q])
-    @impressions = @q.result.best.page(params[:page])
+    @impressions = @q.result(distinct: true).includes(:politician_jobs).best.page(params[:page])
     @impressions.last_page? ? @next_page = nil : @next_page = @impressions.next_page
     @load_params = {q: (params[:q] || {})}.merge(page: @next_page)
     respond_to do |format|
-      format.html { set_meta_tags keywords: @impressions.pluck(:name) }
+      format.html { set_meta_tags keywords: @impressions.map(&:name) }
       format.js
     end
   end
