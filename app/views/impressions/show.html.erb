@@ -11,7 +11,7 @@
 				<div class="profile-bio">
 					<div class="row">
 						<div class="col-md-5">
-							<img class="img-responsive md-margin-bottom-10" src="<%= @impression.image.present? ? impression.image : 'https://www.gapyear.com/member_images/default_set/no-image.gif' %>" alt="">
+							<img class="img-responsive md-margin-bottom-10" src="<%= @impression.image.present? ? @impression.image : 'https://www.gapyear.com/member_images/default_set/no-image.gif' %>" alt="">
 						</div>
 						<div class="col-md-7">
 							<h2><%= @impression.name %></h2>

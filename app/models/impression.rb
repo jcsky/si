@@ -35,6 +35,11 @@ class Impression < ActiveRecord::Base
   scope :worst, -> { order(:reputation)  }
   scope :best, -> { order(reputation: :desc)  }
 
+  def self.party_list
+    party_tag_ids = ActsAsTaggableOn::Tagging.where(context: "parties", taggable_type: "Impression").pluck(:tag_id).uniq
+    ActsAsTaggableOn::Tag.where(id: party_tag_ids)
+  end
+
   def age
     Date.today.year - birthday.to_date.year if birthday.present?
   end
