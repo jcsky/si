@@ -12,6 +12,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # database
 gem 'pg'
+gem 'redis-rails'
 
 # frontend gem
 gem 'meta-tags'
