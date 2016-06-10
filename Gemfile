@@ -17,6 +17,11 @@ gem 'pg'
 gem 'meta-tags'
 gem 'simple_form'
 gem 'kaminari'
+gem 'bootstrap-sass', '~> 3.3.6'
+gem 'owlcarousel-rails'
+gem 'chartkick'
+gem 'groupdate'
+gem 'font-awesome-rails'
 
 # backend gem
 gem 'ransack'
@@ -25,11 +30,24 @@ gem 'aasm'
 gem 'phone'
 gem 'bcrypt', '~> 3.1.7'
 gem 'settingslogic'
+gem 'thumbs_up'
+gem 'acts-as-taggable-on', '~> 3.4'
+gem 'rest-client'
 
 # user & login provider
 gem 'omniauth'
 gem 'omniauth-facebook'
-gem 'devise'
+gem 'devise', '~> 3.5'
+
+# admin
+gem 'activeadmin', '~> 1.0.0.pre2'
+gem 'draper'
+gem 'select2-rails'
+
+# background job
+gem 'sinatra', require: nil
+gem 'sidekiq'
+gem 'sidetiq'
 
 group :development do
   gem 'web-console', '~> 2.0'
@@ -38,6 +56,11 @@ group :development do
   gem 'spring'
   gem 'letter_opener'
   gem 'powder'
+  gem 'meta_request'
+  # deploy to server
+  gem 'capistrano-rails'
+  gem 'capistrano-passenger'
+  gem 'capistrano-sidekiq'
 end
 
 group :development, :test do

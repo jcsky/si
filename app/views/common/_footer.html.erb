@@ -1,0 +1,79 @@
+<!--=== Footer Version 1 ===-->
+<div class="footer-v1">
+  <div class="footer">
+    <div class="container">
+      <div class="row">
+        <!-- About -->
+        <div class="col-md-3 md-margin-bottom-40">
+          <a href="index.html"><img id="logo-footer" class="footer-logo" src="<%= image_url("solveissue_logo.svg") %>" alt="" style="background-color:#fff"></a>
+          <p>為人民提供平台，為民代提供工具</p>
+          <p>為理想「站」出來，大「聲」說出你的喜好</p>
+        </div><!--/col-md-3-->
+        <!-- End About -->
+
+        <!-- Latest -->
+        <div class="col-md-3 md-margin-bottom-40">
+          <div class="posts">
+            <div class="headline"><h2>排行榜</h2></div>
+            <ul class="list-unstyled latest-list">
+              <li>
+                <a href="#">最受喜愛的政治人物</a>
+                <small><%= Impression.best.limit(3).pluck(:name).join(", ") %>...</small>
+              </li>
+              <li>
+                <a href="#">最被討厭的政治人物</a>
+                <small><%= Impression.worst.limit(3).pluck(:name).join(", ") %>...</small>
+              </li>
+            </ul>
+          </div>
+        </div><!--/col-md-3-->
+        <!-- End Latest -->
+
+        <!-- Link List -->
+        <div class="col-md-3 md-margin-bottom-40">
+          <div class="headline"><h2>資料來源</h2></div>
+          <ul class="list-unstyled link-list">
+            <li><a href="http://vote.ly.g0v.tw/">立委投票指南</a><i class="fa fa-angle-right"></i></li>
+            <li><a href="https://councils.g0v.tw/">議員投票指南</a><i class="fa fa-angle-right"></i></li>
+          </ul>
+        </div><!--/col-md-3-->
+        <!-- End Link List -->
+
+        <!-- Address -->
+        <div class="col-md-3 map-img md-margin-bottom-40">
+          <div class="headline"><h2>聯絡我們</h2></div>
+          <address class="md-margin-bottom-40">
+            facebook: <a href="https://www.facebook.com/groups/solveissue/" class="">Solve Issue</a>
+          </address>
+        </div><!--/col-md-3-->
+        <!-- End Address -->
+      </div>
+    </div>
+  </div><!--/footer-->
+
+  <div class="copyright">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <p>
+            2015 &copy; All Rights Reserved.
+            <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+          </p>
+        </div>
+
+        <!-- Social Links -->
+        <div class="col-md-6">
+          <ul class="footer-socials list-inline">
+            <li>
+              <a href="https://www.facebook.com/groups/solveissue/" class="tooltips" data-toggle="tooltip" data-placement="top" title="" data-original-title="Facebook">
+                <i class="fa fa-facebook"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <!-- End Social Links -->
+      </div>
+    </div>
+  </div><!--/copyright-->
+</div>
+  <!--=== End Footer Version 1 ===-->

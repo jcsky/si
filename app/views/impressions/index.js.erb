@@ -1,0 +1,8 @@
+var html = "<%= j( render :partial => "card_row", collection: @impressions, as: :impression ) %>";
+$("#impressions").append(html);
+
+<% if @next_page %>
+  $("#load-more").attr("href", "<%= impressions_path(@event, @load_params) %>")
+<% else %>
+  $("#load-more").remove();
+<% end %>

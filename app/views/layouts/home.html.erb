@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%= stylesheet_link_tag "application", params[:controller] %>
+  <%= javascript_include_tag "chartkick", "highcharts" %>
+  <%= csrf_meta_tags %>
+  <%= display_meta_tags %>
+  <!-- unify -->
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+</head>
+<body class="header-fixed promo-padding-top">
+  <div class="wrapper">
+    <%= render partial: "common/navbar" %>
+    <%= yield %>
+    <%= render partial: "common/footer" %>
+  </div>
+
+  <%= javascript_include_tag "application", params[:controller] %>
+
+  <script type="text/javascript">
+		jQuery(document).ready(function() {
+			App.init();
+			new WOW().init();
+			App.initParallaxBg();
+			FancyBox.initFancybox();
+			OwlCarousel.initOwlCarousel();
+			StyleSwitcher.initStyleSwitcher();
+		});
+	</script>
+
+</body>
+</html>

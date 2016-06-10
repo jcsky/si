@@ -1,0 +1,63 @@
+
+<div class="margin-bottom-60 sm-margin-bottom-10"></div>
+
+<!--=== Job Img ===-->
+<div class="job-img margin-bottom-30">
+  <div class="job-banner">
+    <h2>找出你在意的民意代表，然後給它按一下 ...</h2>
+  </div>
+
+
+  <div class="job-img-inputs">
+    <div class="container">
+      <div class="row">
+        <%= search_form_for @q, url: impressions_path, html: { method: :get } do |f| %>
+        <div class="col-sm-4 md-margin-bottom-10">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-tag"></i></span>
+            <%= f.search_field :politician_jobs_title_cont, placeholder: "總統、立法委員、議員、..",class: "form-control" %>
+          </div>
+        </div>
+        <!-- <div class="col-sm-4 md-margin-bottom-10">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-tag"></i></span>
+            <%#= f.select :party, options_for_select(Impression.party_list) , {}, class: "form-control" %>
+          </div>
+        </div> -->
+        <div class="col-sm-4 md-margin-bottom-10">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
+            <%= f.select :politician_jobs_electoral_region_eq, options_for_select(PoliticianJob.all.pluck(:electoral_region).uniq), {}, {class: "form-control", style: "border-radius: 0;-webkit-appearance: none;"} %>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <%= f.submit "搜尋", class: "btn-u btn-block btn-u-dark" %>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+</div>
+<!--=== End Job Img ===-->
+
+<div class="container content profile">
+  <div class="row">
+
+    <!-- Profile Content -->
+    <div class="col-md-6 col-md-push-3">
+      <div id="impressions" class="profile-body margin-bottom-20">
+        <div class="page">
+          <%= render partial: "card_row", collection: @impressions, as: :impression %>
+        </div>
+        <!--End Profile Blog-->
+      </div>
+      <%= link_to_next_page @impressions, 'Next Page', :remote => true, :id => "load-more", :class => "btn btn-primary", params: @load_params %>
+    </div>
+    <!-- End Profile Content -->
+  </div><!--/end row-->
+</div>
+
+<script>
+
+</script>

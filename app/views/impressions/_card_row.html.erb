@@ -1,0 +1,18 @@
+<div class="row margin-bottom-20" id=<%= dom_id(impression) %>>
+  <div class="col-sm-12 sm-margin-bottom-20">
+    <div class="profile-blog">
+      <img class="rounded-x" src="<%= impression.image.present? ? impression.image : 'https://www.gapyear.com/member_images/default_set/no-image.gif' %>" alt="">
+      <div class="name-location">
+        <strong><%= impression.name %></strong>
+        <!-- <span><%= impression.politician_job_names %></span> -->
+        <span><%= impression.party_list %></span>
+        <span><i class="fa fa-map-marker"></i><%= impression.electoral_region_names %></span>
+      </div>
+      <div class="clearfix margin-bottom-20"></div>
+      <p><%= impression.politician_job_names %></p>
+      <%= link_to "更多", impression_path(impression) %>
+      <hr>
+      <%= render partial: "vote", locals: { impression: impression } %>
+    </div>
+  </div>
+</div><!--/end row-->
