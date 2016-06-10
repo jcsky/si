@@ -56,7 +56,7 @@ Rails.application.configure do
   # config.logger = ActiveSupport::TaggedLogging.new(SyslogLogger.new)
 
   # Use a different cache store in production.
-  config.cache_store = :redis_store, 'redis://si.z127fz.0001.apne1.cache.amazonaws.com:6379/0', {
+  config.cache_store = :redis_store, 'redis://si-p.z127fz.0001.apne1.cache.amazonaws.com:6379/0', {
     expires_in: 90.minutes,
     namespace: 'si_cache'
   }
