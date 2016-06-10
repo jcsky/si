@@ -91,9 +91,9 @@ GEM
     capistrano-rails (1.1.6)
       capistrano (~> 3.1)
       capistrano-bundler (~> 1.1)
-    capistrano-sidekiq (0.5.4)
+    capistrano-sidekiq (0.5.3)
       capistrano
-      sidekiq (>= 3.4)
+      sidekiq
     capybara (2.7.0)
       addressable
       mime-types (>= 1.16)
@@ -460,7 +460,7 @@ DEPENDENCIES
   byebug
   capistrano-passenger
   capistrano-rails
-  capistrano-sidekiq
+  capistrano-sidekiq (= 0.5.3)
   capybara
   chartkick
   coffee-rails (~> 4.1.0)
